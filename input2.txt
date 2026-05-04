@@ -1,0 +1,65 @@
+15
+3 28
+codingisfunandlogicxxxxaaa
+xxcodingisfunandlogicyyyy
+zzzcodingisfunandlogiczzz
+2 22
+revivanelserveraaaa
+xxrevivanelserverxx
+3 30
+debuggingisfunxxxcode
+xxdebuggingisfuncodeyy
+zzzdebuggingisfuncodeqq
+4 35
+codingisartoflogicxxx
+xxcodingisartoflogicyy
+yycodingisartoflogiczz
+zzzcodingisartoflogicww
+3 25
+funfuncodingisfunxxx
+xxfuncodingisfunyy
+zzfuncodingisfunqq
+2 20
+logicandcodeaaa
+xxlogicandcodexx
+3 27
+artofcodingisxxx
+xxartofcodingisyy
+zzartofcodingisqq
+4 40
+codingisdeepthinkingxxx
+xxcodingisdeepthinkingyy
+yycodingisdeepthinkingzz
+zzcodingisdeepthinkingww
+3 26
+problemcodingfunxxx
+xxproblemcodingfunyy
+zzproblemcodingfunqq
+2 18
+codingislifeaaa
+xxcodingislifexx
+3 29
+debugcodefunxxx
+xxdebugcodefunyy
+zzdebugcodefunqq
+4 38
+codingisfastlogicxxx
+xxcodingisfastlogicyy
+yycodingisfastlogiczz
+zzcodingisfastlogicww
+3 24
+funlogiccodexxx
+xxfunlogiccodeyy
+zzfunlogiccodeqq
+2 21
+revivanelserverbbb
+xxrevivanelserverxx
+3 28
+codingisbeautifulxxx
+xxcodingisbeautifulyy
+zzcodingisbeautifulqq
+4 36
+logicdebugcodefunxxx
+xxlogicdebugcodefunyy
+yylogicdebugcodefunzz
+zzlogicdebugcodefunww

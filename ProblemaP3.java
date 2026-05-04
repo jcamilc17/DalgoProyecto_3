@@ -2,69 +2,52 @@ import java.util.Scanner;
 
 public class ProblemaP3 {
 
-    public static int[] lcsLength (String s1, String s2) {
-        int m = s1.length();
-        int n = s2.length();
-        int [] prev = new int [n + 1];
-        for (int i = 1; i <= m; i++) {
-            int [] curr = new int[n + 1];
-            for (int j = 1; j <= n; j++) {
-                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-                    curr[j] = prev[j - 1] + 1;
-                } else {
-                    curr[j] = Math.max(prev[j], curr[j - 1]);
-                }
-            }
-            prev = curr;
+    static int[][] memo;
+    static String s1, s2;
+ 
+    // Recursive con memoización — solo calcula longitudes
+    public static int lcsRec(int i, int j) {
+        if (i == 0 || j == 0) return 0;
+        if (memo[i][j] != -1) return memo[i][j];
+        if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+            memo[i][j] = 1 + lcsRec(i - 1, j - 1);
+        } else {
+            memo[i][j] = Math.max(lcsRec(i - 1, j), lcsRec(i, j - 1));
         }
-        return prev;
+        return memo[i][j];
     }
-
-    public static String hirschbergRec(String s1, String s2) {
-        if (s1.length() == 0 || s2.length() == 0) {
-            return "";
-        }
-        if (s1.length() == 1) {
-            if (s2.indexOf(s1.charAt(0)) != -1) {
-                return String.valueOf(s1.charAt(0));
+ 
+    // Backtracking sobre la tabla memo para reconstruir el string
+    public static String backtrack(int i, int j) {
+        if (i == 0 || j == 0) return "";
+        if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+            return backtrack(i - 1, j - 1) + s1.charAt(i - 1);
+        } else {
+            if (lcsRec(i - 1, j) >= lcsRec(i, j - 1)) {
+                return backtrack(i - 1, j);
             } else {
-                return "";
+                return backtrack(i, j - 1);
             }
         }
-        if (s2.length() == 1) {
-            if (s1.indexOf(s2.charAt(0)) != -1) {
-                return String.valueOf(s2.charAt(0));
-            } else {
-                return "";
-            }
-        }
-
-        int m = s1.length() / 2;
-        int[] l1 = lcsLength(s1.substring(0, m), s2);
-        int[] l2 = lcsLength(
-            new StringBuilder(s1.substring(m)).reverse().toString(),
-            new StringBuilder(s2).reverse().toString()
-        );
-
-        int split = 0;
-        int best = -1;
-        int n = s2.length();
-        for (int j = 0; j <= n; j++) {
-            int val = l1[j] + l2[n - j];
-            if (val > best) {
-                best = val;
-                split = j;
-            }
-        }
-
-        return hirschbergRec(s1.substring(0, m), s2.substring(0, split))
-            + hirschbergRec(s1.substring(m), s2.substring(split));
+    }
+ 
+    public static String lcs(String a, String b) {
+        s1 = a;
+        s2 = b;
+        int m = a.length();
+        int n = b.length();
+        memo = new int[m + 1][n + 1];
+        for (int i = 0; i <= m; i++)
+            for (int j = 0; j <= n; j++)
+                memo[i][j] = -1;
+        lcsRec(m, n);
+        return backtrack(m, n);
     }
  
     public static String resolverLCS(String[] cadenas) {
         String resultado = cadenas[0];
         for (int i = 1; i < cadenas.length; i++) {
-            resultado = hirschbergRec(resultado, cadenas[i]);
+            resultado = lcs(resultado, cadenas[i]);
             if (resultado.isEmpty()) break;
         }
         return resultado;
